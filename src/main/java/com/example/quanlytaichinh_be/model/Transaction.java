@@ -1,5 +1,6 @@
 package com.example.quanlytaichinh_be.model;
 
+import com.example.quanlytaichinh_be.model.enumM.TransactionType;
 import jakarta.persistence.*;
 import jakarta.persistence.spi.PersistenceUnitTransactionType;
 import jakarta.validation.constraints.NotBlank;
@@ -29,7 +30,7 @@ public class Transaction {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TransactionType  transactionType;
+    private TransactionType transactionType;
 
     @Column
     private String note;
