@@ -3,8 +3,7 @@ package vn.codegym.moneymanagement.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.security.Permission;
+import vn.codegym.moneymanagement.model.enumM.Permission;
 
 @Entity
 @Table(name = "shared_wallets")
