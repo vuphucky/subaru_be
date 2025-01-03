@@ -1,4 +1,4 @@
-package vn.codegym.moneymanagement.service.uer;
+package vn.codegym.moneymanagement.service.user;
 
 import vn.codegym.moneymanagement.model.User;
 import vn.codegym.moneymanagement.service.IGenericService;

@@ -10,28 +10,17 @@ import java.util.Optional;
 @Service
 public class RoleService implements IRoleService {
     @Autowired
-    private IRoleRepository roleRepository;
-    @Override
-    public Iterable<Role> findAll() {
-        return roleRepository.findAll();
-    }
+    private IRoleRepository iRoleRepository;
 
     @Override
-    public Optional<Role> findById(Long id) {
-        return roleRepository.findById(id);
+    public Role findByName(String name) {
+        try {
+            RoleName roleName = RoleName.valueOf(name); // Chuyển đổi String sang RoleName
+            return iRoleRepository.findByName(roleName); // Gọi phương thức với RoleName
+        } catch (IllegalArgumentException e) {
+            // Xử lý nếu tên không hợp lệ
+            return null; // Hoặc xử lý theo cách khác
+        }
     }
 
-    @Override
-    public void save(Role role) {
-        roleRepository.save(role);
-    }
-
-    @Override
-    public void delete(Long id) {
-        roleRepository.deleteById(id);
-    }
-
-    public Role findByName(RoleName name) {
-       return roleRepository.findByName(name);
-    }
 }
