@@ -1,4 +1,5 @@
 package vn.codegym.moneymanagement.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/expense-categories")
+@CrossOrigin("*")
 public class ExpenseCategoryController {
 
     @Autowired
@@ -54,4 +56,3 @@ public class ExpenseCategoryController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
-
