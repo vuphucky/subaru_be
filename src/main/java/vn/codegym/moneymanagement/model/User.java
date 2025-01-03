@@ -48,7 +48,7 @@ public class User {
     )
     private Set<Role> roles;
 
-    private boolean isActive = false;
+    private boolean isActive = true;
 
     private String activationToken;
 
