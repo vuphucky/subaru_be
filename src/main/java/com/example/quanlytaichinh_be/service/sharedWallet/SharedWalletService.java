@@ -1,6 +1,7 @@
 package com.example.quanlytaichinh_be.service.sharedWallet;
 
 import com.example.quanlytaichinh_be.model.SharedWallet;
+import com.example.quanlytaichinh_be.model.Wallet;
 import com.example.quanlytaichinh_be.repository.ISharedWalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,9 @@ public class SharedWalletService implements ISharedWalletService {
     }
 
     @Override
-    public void save(SharedWallet sharedWallet) {
+    public Wallet save(SharedWallet sharedWallet) {
         sharedWalletRepo.save(sharedWallet);
+        return null;
     }
 
     @Override

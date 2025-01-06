@@ -23,8 +23,9 @@ public class WalletService implements IWalletService {
     }
 
     @Override
-    public void save(Wallet wallet) {
+    public Wallet save(Wallet wallet) {
         walletRepository.save(wallet);
+        return wallet;
     }
 
     @Override

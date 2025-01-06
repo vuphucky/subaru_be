@@ -99,7 +99,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/accounts/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/api/transactions/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/api/external-accounts/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/api/wallets/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/wallets/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(customizer -> customizer.accessDeniedHandler(customAccessDeniedHandler()))

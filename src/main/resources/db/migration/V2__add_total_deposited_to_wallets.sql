@@ -1,0 +1,2 @@
+ALTER TABLE wallets
+ADD COLUMN total_deposited DECIMAL(19,2) NOT NULL DEFAULT 0;

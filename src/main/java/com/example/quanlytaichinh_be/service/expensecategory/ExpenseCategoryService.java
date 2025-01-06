@@ -1,5 +1,6 @@
 package com.example.quanlytaichinh_be.service.expensecategory;
 import com.example.quanlytaichinh_be.model.ExpenseCategory;
+import com.example.quanlytaichinh_be.model.Wallet;
 import com.example.quanlytaichinh_be.repository.IExpenseCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +24,9 @@ public class ExpenseCategoryService implements IExpenseCategoryService {
     }
 
     @Override
-    public void save(ExpenseCategory expenseCategory) {
+    public Wallet save(ExpenseCategory expenseCategory) {
         expenseCategoryRepository.save(expenseCategory);
+        return null;
     }
 
     @Override

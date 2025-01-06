@@ -1,6 +1,7 @@
 package com.example.quanlytaichinh_be.service.transaction;
 
 import com.example.quanlytaichinh_be.model.Transaction;
+import com.example.quanlytaichinh_be.model.Wallet;
 import com.example.quanlytaichinh_be.repository.ITransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,8 +23,9 @@ public class TransactionService implements ITransactionService {
     }
 
     @Override
-    public void save(Transaction transaction) {
+    public Wallet save(Transaction transaction) {
         transactionRepository.save(transaction);
+        return null;
     }
 
     @Override

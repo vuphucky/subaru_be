@@ -1,6 +1,7 @@
 package com.example.quanlytaichinh_be.service.expense;
 
 import com.example.quanlytaichinh_be.model.Expense;
+import com.example.quanlytaichinh_be.model.Wallet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.quanlytaichinh_be.repository.IExpenseRepository;
@@ -24,8 +25,9 @@ public class ExpenseService implements IExpenseService {
     }
 
     @Override
-    public void save(Expense expense) {
+    public Wallet save(Expense expense) {
         expenseRepository.save(expense);
+        return null;
     }
 
     @Override

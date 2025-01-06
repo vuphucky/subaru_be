@@ -2,6 +2,7 @@ package com.example.quanlytaichinh_be.service.user;
 
 import com.example.quanlytaichinh_be.config.UserPrinciple;
 import com.example.quanlytaichinh_be.model.User;
+import com.example.quanlytaichinh_be.model.Wallet;
 import com.example.quanlytaichinh_be.repository.IUserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -36,9 +37,10 @@ public class UserService implements UserDetailsService, IUserService {
         return UserPrinciple.build(user);
     }
 
-    public void save(User user) {
+    public Wallet save(User user) {
         // You can add additional checks or preprocessing here if needed
         userRepository.save(user);
+        return null;
     }
 
     public void delete(Long id) {

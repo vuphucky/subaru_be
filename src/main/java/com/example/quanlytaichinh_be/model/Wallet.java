@@ -34,10 +34,12 @@ public class Wallet {
 
     private String iconUrl; // Đường dẫn lưu icon
 
+    @Column(name = "total_deposited", nullable = false)
+    private BigDecimal totalDeposited = BigDecimal.ZERO; // Tổng số tiền đã nạp vào ví
+
     @OneToMany(mappedBy = "wallet", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Transaction> transactions = new ArrayList<>();
 
     @OneToMany(mappedBy = "wallet", cascade = CascadeType.ALL)
     private List<SharedWallet> sharedWallets = new ArrayList<>();
-
 }
