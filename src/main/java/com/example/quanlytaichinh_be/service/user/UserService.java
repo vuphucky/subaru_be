@@ -37,19 +37,13 @@ public class UserService implements UserDetailsService, IUserService {
         return UserPrinciple.build(user);
     }
 
-    public Wallet save(User user) {
+    public void save(User user) {
         // You can add additional checks or preprocessing here if needed
         userRepository.save(user);
-        return null;
     }
 
     public void delete(Long id) {
         userRepository.deleteById(id);
-    }
-
-    @Override
-    public Iterable<User> findAll() {
-        return null;
     }
 
     public Optional<User> findById(Long id) {
@@ -93,4 +87,10 @@ public class UserService implements UserDetailsService, IUserService {
         save(user);
     }
 
+    public void updatePassword(User user, String newPassword) {
+        // Mã hóa mật khẩu mới
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+        save(user);
+    }
 }
