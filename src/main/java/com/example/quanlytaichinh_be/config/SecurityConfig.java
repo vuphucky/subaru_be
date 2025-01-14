@@ -1,6 +1,5 @@
 package com.example.quanlytaichinh_be.config;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +24,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-
 
 import com.example.quanlytaichinh_be.config.jwt.CustomAccessDeniedHandler;
 import com.example.quanlytaichinh_be.config.jwt.JwtAuthenticationTokenFilter;
@@ -82,9 +80,12 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.cors(httpSecurityCorsConfigurer -> {
                     CorsConfiguration configuration = new CorsConfiguration();
-                    configuration.setAllowedOrigins(Arrays.asList("*"));
-                    configuration.setAllowedMethods(Arrays.asList("*"));
-                    configuration.setAllowedHeaders(Arrays.asList("*"));
+                    configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+                    configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+                    configuration.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type", "Access-Control-Allow-Origin"));
+                    configuration.setExposedHeaders(Arrays.asList("Authorization"));
+                    configuration.setAllowCredentials(true);
+                    configuration.setMaxAge(3600L);
                     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
                     source.registerCorsConfiguration("/**", configuration);
                     httpSecurityCorsConfigurer.configurationSource(source);
@@ -94,8 +95,10 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/register").permitAll()
                         .requestMatchers("/api/auth/login").permitAll()
                         .requestMatchers("/api/role").permitAll()
-                        .requestMatchers("/api/admin/**").hasRole("ADMIN") // Removed ROLE_ prefix
-                        .requestMatchers("/api/user/**").hasRole("USER") // Removed ROLE_ prefix
+                        .requestMatchers("/uploads/**").permitAll()
+                        .requestMatchers("/api/users/profile").authenticated()
+                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/user/**").hasRole("USER")
                         .requestMatchers("/api/accounts/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/api/transactions/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/api/external-accounts/**").hasAnyRole("USER", "ADMIN")

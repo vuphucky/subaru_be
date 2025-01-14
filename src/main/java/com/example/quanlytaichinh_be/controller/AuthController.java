@@ -25,7 +25,9 @@ import com.example.quanlytaichinh_be.service.email.EmailService;
 import com.example.quanlytaichinh_be.service.role.RoleService;
 import com.example.quanlytaichinh_be.service.user.UserService;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -72,9 +74,17 @@ public class AuthController {
             return new ResponseEntity<>("Account is not activated. Please check your email to activate.", HttpStatus.FORBIDDEN);
         }
 
+        // Tạo response với đầy đủ thông tin user
+        Map<String, Object> response = new HashMap<>();
+        response.put("token", jwt);
+        response.put("id", currentUser.getId());
+        response.put("username", currentUser.getUsername());
+        response.put("email", currentUser.getEmail());
+        response.put("fullName", currentUser.getFullName());
+        response.put("avatar", currentUser.getAvatar());
+        response.put("authorities", userDetails.getAuthorities());
 
-
-        return ResponseEntity.ok(new JwtResponse(currentUser.getId(), jwt, userDetails.getUsername(), userDetails.getUsername(), userDetails.getAuthorities()));
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/register")
